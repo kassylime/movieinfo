@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>내부 서버 오류</title>
+  <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<div class="wrap">
+  <th:block th:insert="~{header.html}"></th:block>
+  <div class="content">
+    <center>
+      <br>
+      <br>
+      <img th:src="@{https://cdn.pixabay.com/photo/2016/11/26/19/17/abstract-1861459_1280.png}" width="50%">
+      <h1>서버에 문제가 발생하였습니다.</h1>
+      <p>관리자에게 문의하세요.</p>
+    </center>
+  </div>
+  <th:block th:insert="~{footer.html}"></th:block>
+</div>
+</body>
+</html>

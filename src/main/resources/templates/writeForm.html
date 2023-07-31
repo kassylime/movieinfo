@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie - write</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script th:inline="javascript">
+        $(function () {
+            let m = [[${msg}]]; // msg가 없으면 null
+            if (m != null) {
+                alert(m);
+            }
+
+            $("#file").on("change", function (){
+               let files = $("#file")[0].files;
+               let fileName = "";
+               if(files.length == 1){
+                   fileName = files[0].name;
+               } else {
+                   fileName = "파일선택";
+               }
+               $(".upload-name").val(fileName);
+            });
+
+            $("#backbtn").on("click", function (){
+               let pn = [[${session.pageNum}]];
+               if(pn == null){
+                   pn = 1;
+               }
+               location.href = "/?pageNum=" + pn;
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <th:block th:insert="~{header.html}"></th:block>
+    <div class="content">
+        <form th:action="@{writeProc}" method="post" class="write-form" enctype="multipart/form-data">
+            <h2>영화 등록</h2>
+            <div class="filebox">
+                <label for="file">포스터</label>
+                <input type="file" name="files" id="file">
+                <input type="text" class="upload-name" value="파일선택" readonly>
+            </div>
+            <input type="text" class="write-input" name="mname" autofocus placeholder="제목입력" required>
+            <input type="text" class="write-input" name="mdirector" placeholder="감독입력" required>
+            <input type="text" class="write-input" name="mnation" placeholder="국가입력" required>
+            <input type="text" class="write-input" name="mgenre" placeholder="장르입력" required>
+            <input type="text" class="write-input" name="mactor" placeholder="배우입력" required>
+            <input type="date" class="write-input" name="mopen" placeholder="개봉일입력" required>
+            <textarea rows="5" class="write-input ta" name="msynopsis" placeholder="개요입력"></textarea>
+            <div class="btn-area">
+                <input type="submit" class="btn-write" value="W">
+                <input type="reset" class="btn-write" value="R">
+                <input type="button" class="btn-write" value="B" id="backbtn">
+            </div>
+        </form>
+    </div>
+    <th:block th:insert="~{footer.html}"></th:block>
+</div>
+</body>
+</html>

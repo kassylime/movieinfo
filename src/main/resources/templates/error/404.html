@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>페이지 없음</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<div class="wrap">
+    <th:block th:insert="~{header.html}"></th:block>
+    <div class="content">
+        <center>
+            <br>
+            <br>
+            <img th:src="@{https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_1280.jpg}" width="50%">
+            <h1>요청하신 페이지가 없습니다.</h1>
+            <p>관리자에게 문의하세요.</p>
+        </center>
+    </div>
+    <th:block th:insert="~{footer.html}"></th:block>
+</div>
+</body>
+</html>
